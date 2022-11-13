@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Component
 @Lazy
-public class ImageFileModule implements FileModule{
+public class ImageFileModule extends FileModule{
     private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.JPG, FileExtension.PNG};
     private static final String[] FUNCTIONS_DESCRIPTION = {
             "1. Display image size.",
@@ -32,11 +32,11 @@ public class ImageFileModule implements FileModule{
         FUNCTIONS_NAMES.put(2, "displayExif");
         FUNCTIONS_NAMES.put(3, "deleteFile");
     }
-
     private final File file;
 
     @Autowired
     public ImageFileModule(File file) {
+        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION);
         this.file = file;
     }
 
@@ -57,20 +57,6 @@ public class ImageFileModule implements FileModule{
 
     private void deleteFile() throws IOException {
         FileUtils.delete(file);
-    }
-
-
-    @Override
-    public boolean doesSupport(FileExtension type) {
-        return ArrayUtils.contains(SUPPORTED_EXTENSIONS, type);
-    }
-
-    @Override
-    public void showFunctionDescription() {
-        for (String line:
-                FUNCTIONS_DESCRIPTION) {
-            System.out.println(line);
-        }
     }
 
     @Override

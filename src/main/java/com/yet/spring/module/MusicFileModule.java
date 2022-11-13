@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Component
 @Lazy
-public class MusicFileModule implements FileModule{
+public class MusicFileModule extends FileModule{
     private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.MP3};
     private static final String[] FUNCTIONS_DESCRIPTION = {
             "1. Display track name.",
@@ -30,20 +30,8 @@ public class MusicFileModule implements FileModule{
 
     @Autowired
     public MusicFileModule(File file) {
+        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION);
         this.file = file;
-    }
-
-    @Override
-    public boolean doesSupport(FileExtension type) {
-        return ArrayUtils.contains(SUPPORTED_EXTENSIONS, type);
-    }
-
-    @Override
-    public void showFunctionDescription() {
-        for (String line:
-                FUNCTIONS_DESCRIPTION) {
-            System.out.println(line);
-        }
     }
 
     @Override

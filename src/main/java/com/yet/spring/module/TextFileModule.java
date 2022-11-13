@@ -15,8 +15,8 @@ import java.util.TreeMap;
 
 @Component
 @Lazy
-public class TextFileModule implements FileModule {
-    private static final FileExtension[] SUPPORTED_TYPES = {FileExtension.TXT};
+public class TextFileModule extends FileModule {
+    private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.TXT};
     private static final String[] FUNCTIONS_DESCRIPTION = {
             "1. Counting and displaying the number of lines.",
             "2. Output the frequency of occurrence of each character.",
@@ -31,20 +31,8 @@ public class TextFileModule implements FileModule {
     private final File file;
     @Autowired
     public TextFileModule(File file) {
+        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION);
         this.file = file;
-    }
-
-    @Override
-    public boolean doesSupport(FileExtension type) {
-        return ArrayUtils.contains(SUPPORTED_TYPES, type);
-    }
-
-    @Override
-    public void showFunctionDescription() {
-        for (String line:
-             FUNCTIONS_DESCRIPTION) {
-            System.out.println(line);
-        }
     }
 
     private void deleteFile() throws IOException {
