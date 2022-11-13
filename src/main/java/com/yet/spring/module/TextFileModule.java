@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class TextFileModule implements FileModule {
 
-    private static final FileType[] SUPPORTED_TYPES = {FileType.TXT};
+    private static final FileExtension[] SUPPORTED_TYPES = {FileExtension.TXT};
 
     @Override
-    public boolean doesSupport(FileType type) {
+    public boolean doesSupport(FileExtension type) {
         return ArrayUtils.contains(SUPPORTED_TYPES, type);
     }
 

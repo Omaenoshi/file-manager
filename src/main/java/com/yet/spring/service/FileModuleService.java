@@ -1,7 +1,7 @@
 package com.yet.spring.service;
 
 import com.yet.spring.module.FileModule;
-import com.yet.spring.module.FileType;
+import com.yet.spring.module.FileExtension;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -15,7 +15,6 @@ import java.util.List;
 public class FileModuleService {
     private final List<FileModule> modules;
     private final File file;
-
     public FileModule currentModule;
 
     @Autowired
@@ -26,10 +25,10 @@ public class FileModuleService {
     }
 
     public FileModule getCurrentModule() {
-        FileType type = getType();
+        FileExtension extension = getExtension();
         for (FileModule module:
              modules) {
-            if (module.doesSupport(type)) {
+            if (module.doesSupport(extension)) {
                 return module;
             }
         }
@@ -37,9 +36,9 @@ public class FileModuleService {
         throw new IllegalArgumentException("Extension does not supported!");
     }
 
-    private FileType getType() {
+    private FileExtension getExtension() {
         String extension = FilenameUtils.getExtension(file.getPath());
-        return FileType.valueOf(extension.toUpperCase());
+        return FileExtension.valueOf(extension.toUpperCase());
     }
 
 

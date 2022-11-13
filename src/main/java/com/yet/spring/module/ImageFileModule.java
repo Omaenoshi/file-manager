@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ImageFileModule implements FileModule{
 
-    private static final FileType[] SUPPORTED_TYPES = {FileType.JPG, FileType.PNG};
+    private static final FileExtension[] SUPPORTED_TYPES = {FileExtension.JPG, FileExtension.PNG};
 
     @Override
-    public boolean doesSupport(FileType type) {
+    public boolean doesSupport(FileExtension type) {
         return ArrayUtils.contains(SUPPORTED_TYPES, type);
     }
 

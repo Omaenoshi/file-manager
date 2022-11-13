@@ -1,7 +1,7 @@
 package com.yet.spring.module;
 
 public interface FileModule {
-    boolean doesSupport(FileType type);
+    boolean doesSupport(FileExtension type);
 
     void count();
 }

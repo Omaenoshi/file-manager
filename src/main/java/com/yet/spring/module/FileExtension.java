@@ -1,6 +1,6 @@
 package com.yet.spring.module;
 
-public enum FileType {
+public enum FileExtension {
     TXT,
     PNG,
     JPG

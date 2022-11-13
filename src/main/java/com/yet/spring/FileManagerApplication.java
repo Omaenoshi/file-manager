@@ -1,36 +1,36 @@
 package com.yet.spring;
 
-import com.yet.spring.module.FileModule;
-import com.yet.spring.module.FileType;
 import com.yet.spring.service.FileModuleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 
-import java.beans.ConstructorProperties;
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
 public class FileManagerApplication {
-    static String path;
+    static String fileName;
     static FileModuleService service;
 
     @Bean
     @Lazy
     public File file() {
-        return new File(path);
+        return new File(fileName);
     }
 
     public static void main(String[] args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(FileManagerApplication.class);
-        System.out.println("enter file name");
 
-        Scanner sc = new Scanner(System.in);
-        path = sc.nextLine();
+        fileName = getFileName();
         service = ctx.getBean(FileModuleService.class);
+    }
+
+    private static String getFileName() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter file name");
+        return sc.nextLine();
     }
 }
