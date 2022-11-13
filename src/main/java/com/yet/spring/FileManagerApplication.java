@@ -29,8 +29,9 @@ public class FileManagerApplication {
     }
 
     private static String getFileName() {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter file name");
-        return sc.nextLine();
+        try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Enter file name");
+            return sc.nextLine();
+        }
     }
 }

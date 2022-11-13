@@ -24,7 +24,7 @@ public class FileModuleService {
         currentModule = getCurrentModule();
     }
 
-    public FileModule getCurrentModule() {
+    private FileModule getCurrentModule() {
         FileExtension extension = getExtension();
         for (FileModule module:
              modules) {
@@ -41,5 +41,9 @@ public class FileModuleService {
         return FileExtension.valueOf(extension.toUpperCase());
     }
 
+    public void showFunctions() {
+        System.out.println("Select function: ");
+        currentModule.showFunctionDescription();
 
+    }
 }
