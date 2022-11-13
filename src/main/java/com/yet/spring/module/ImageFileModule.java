@@ -6,7 +6,6 @@ import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -17,7 +16,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -27,7 +25,7 @@ public class ImageFileModule implements FileModule{
     private static final String[] FUNCTIONS_DESCRIPTION = {
             "1. Display image size.",
             "2. Display exif information.",
-            "3. Delete file"
+            "3. Delete file."
     };
     private static final Map<Integer, String> FUNCTIONS_NAMES = new HashMap<>(); static {
         FUNCTIONS_NAMES.put(1, "displaySize");
