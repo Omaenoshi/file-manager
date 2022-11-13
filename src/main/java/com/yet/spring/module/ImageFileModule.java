@@ -26,4 +26,9 @@ public class ImageFileModule implements FileModule{
     public void showFunctionDescription() {
 
     }
+
+    @Override
+    public void doFunction(int functionNum) {
+
+    }
 }

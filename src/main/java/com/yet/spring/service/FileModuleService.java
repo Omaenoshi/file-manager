@@ -8,7 +8,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Scanner;
 
 @Service
 @Lazy
@@ -41,9 +43,12 @@ public class FileModuleService {
         return FileExtension.valueOf(extension.toUpperCase());
     }
 
-    public void showFunctions() {
+    public void showFunctions() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         System.out.println("Select function: ");
         currentModule.showFunctionDescription();
 
+        Scanner sc = new Scanner(System.in);
+        int functionNum = sc.nextInt();
+        currentModule.doFunction(functionNum);
     }
 }

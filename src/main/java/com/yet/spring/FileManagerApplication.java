@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 
 import java.io.File;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
 
 @SpringBootApplication
@@ -21,17 +22,17 @@ public class FileManagerApplication {
         return new File(fileName);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(FileManagerApplication.class);
 
         fileName = getFileName();
         service = ctx.getBean(FileModuleService.class);
+        service.showFunctions();
     }
 
     private static String getFileName() {
-        try (Scanner sc = new Scanner(System.in)) {
-            System.out.println("Enter file name");
-            return sc.nextLine();
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter file name");
+        return sc.nextLine();
     }
 }
