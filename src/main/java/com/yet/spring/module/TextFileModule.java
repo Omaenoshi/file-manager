@@ -12,4 +12,9 @@ public class TextFileModule implements FileModule {
     public boolean doesSupport(FileType type) {
         return ArrayUtils.contains(SUPPORTED_TYPES, type);
     }
+
+    @Override
+    public void count() {
+
+    }
 }
