@@ -30,7 +30,7 @@ public class MusicFileModule extends FileModule{
 
     @Autowired
     public MusicFileModule(File file) {
-        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION);
+        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION, FUNCTIONS_NAMES);
         this.file = file;
     }
 

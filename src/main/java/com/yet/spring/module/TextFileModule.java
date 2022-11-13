@@ -31,7 +31,7 @@ public class TextFileModule extends FileModule {
     private final File file;
     @Autowired
     public TextFileModule(File file) {
-        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION);
+        super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION, FUNCTIONS_NAMES);
         this.file = file;
     }
 

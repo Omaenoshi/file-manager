@@ -1,7 +1,7 @@
 package com.yet.spring.service;
 
-import com.yet.spring.module.FileModule;
 import com.yet.spring.module.FileExtension;
+import com.yet.spring.module.FileModule;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -43,7 +43,7 @@ public class FileModuleService {
         return FileExtension.valueOf(extension.toUpperCase());
     }
 
-    public void showFunctions() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public void showFunctions() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException{
         System.out.println("Select function: ");
         currentModule.showFunctionDescription();
 
