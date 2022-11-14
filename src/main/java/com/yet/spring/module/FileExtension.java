@@ -4,5 +4,6 @@ public enum FileExtension {
     TXT,
     PNG,
     JPG,
-    MP3
+    MP3,
+    DIRECTORY
 }

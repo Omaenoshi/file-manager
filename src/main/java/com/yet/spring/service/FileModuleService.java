@@ -39,8 +39,13 @@ public class FileModuleService {
     }
 
     private FileExtension getExtension() {
-        String extension = FilenameUtils.getExtension(file.getPath());
-        return FileExtension.valueOf(extension.toUpperCase());
+        if (file.isDirectory()) {
+            return FileExtension.DIRECTORY;
+        }
+        else {
+            String extension = FilenameUtils.getExtension(file.getPath());
+            return FileExtension.valueOf(extension.toUpperCase());
+        }
     }
 
     public void showFunctions() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException{
