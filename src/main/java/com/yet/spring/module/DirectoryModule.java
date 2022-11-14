@@ -1,9 +1,9 @@
 package com.yet.spring.module;
 
-import jdk.jfr.Category;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -14,6 +14,7 @@ import java.util.Map;
 
 @Component
 @Lazy
+@Scope("prototype")
 public class DirectoryModule extends FileModule{
 
     private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.DIRECTORY};

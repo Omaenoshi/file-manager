@@ -13,8 +13,7 @@ import java.util.Scanner;
 
 @SpringBootApplication
 public class FileManagerApplication {
-    static String fileName;
-    static FileModuleService service;
+    private static String fileName;
 
     @Bean
     @Lazy
@@ -26,7 +25,7 @@ public class FileManagerApplication {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(FileManagerApplication.class);
 
         fileName = getFileName();
-        service = ctx.getBean(FileModuleService.class);
+        FileModuleService service = ctx.getBean(FileModuleService.class);
         service.showFunctions();
     }
 

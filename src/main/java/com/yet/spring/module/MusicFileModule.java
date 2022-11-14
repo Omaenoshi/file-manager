@@ -5,20 +5,19 @@ import com.mpatric.mp3agic.InvalidDataException;
 import com.mpatric.mp3agic.Mp3File;
 import com.mpatric.mp3agic.UnsupportedTagException;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
 @Component
 @Lazy
+@Scope("prototype")
 public class MusicFileModule extends FileModule{
     private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.MP3};
     private static final String[] FUNCTIONS_DESCRIPTION = {

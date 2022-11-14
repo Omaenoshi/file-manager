@@ -1,20 +1,22 @@
 package com.yet.spring.module;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
 @Component
 @Lazy
+@Scope("prototype")
 public class TextFileModule extends FileModule {
     private static final FileExtension[] SUPPORTED_EXTENSIONS = {FileExtension.TXT};
     private static final String[] FUNCTIONS_DESCRIPTION = {

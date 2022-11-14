@@ -5,6 +5,7 @@ import com.yet.spring.module.FileModule;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -14,10 +15,11 @@ import java.util.Scanner;
 
 @Service
 @Lazy
+@Scope("prototype")
 public class FileModuleService {
     private final List<FileModule> modules;
     private final File file;
-    public FileModule currentModule;
+    private final FileModule currentModule;
 
     @Autowired
     public FileModuleService(List<FileModule> modules, File file) {
