@@ -28,19 +28,19 @@ public class TextFileModule extends FileModule {
         FUNCTIONS_NAMES.put(3, "deleteFile");
     }
 
-    private final File file;
+    private static File file;
     @Autowired
     public TextFileModule(File file) {
         super(SUPPORTED_EXTENSIONS, FUNCTIONS_DESCRIPTION, FUNCTIONS_NAMES);
-        this.file = file;
+        TextFileModule.file = file;
     }
 
-    private void deleteFile() throws IOException {
+    private static void deleteFile() throws IOException {
         FileUtils.delete(file);
         System.out.println("File deleted successfully");
     }
 
-    private void countNumberOfLines() throws IOException {
+    private static void countNumberOfLines() throws IOException {
         int count = 0;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             while (br.readLine() != null)
@@ -49,7 +49,7 @@ public class TextFileModule extends FileModule {
         System.out.println("Number of lines is " + count);
     }
 
-    private void countFrequencyOfChar() throws IOException {
+    private static void countFrequencyOfChar() throws IOException {
         Map<Character, Integer> result = new TreeMap<>();
 
         int c;
@@ -70,11 +70,5 @@ public class TextFileModule extends FileModule {
         }
         for(Map.Entry<Character, Integer> pair : result.entrySet())
             System.out.println(pair.getKey() + ": " + pair.getValue());
-    }
-
-    @Override
-    public void doFunction(int functionNum) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = TextFileModule.class.getDeclaredMethod(FUNCTIONS_NAMES.get(functionNum));
-        method.invoke(this);
     }
 }
